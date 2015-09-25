@@ -13,8 +13,6 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $person = new Person();
-        $person->setName('Billy the kid');
-        $person->setAge(15);
 
         $form = $this->createForm(new PersonType(), $person);
         $form->handleRequest($request);
@@ -22,7 +20,6 @@ class DefaultController extends Controller
 
         if ($form->isValid()) {
             return $this->forward('AppBundle:Default:addPerson', array('person' => $person));
-
         }
 
         return $this->render('index.html.twig', array('form' => $form->createView()));
