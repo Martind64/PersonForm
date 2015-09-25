@@ -2,15 +2,26 @@
 
 {% block body %}
 
-    <div class="container">
 
-        {{ form_start(form) }}
-        {{  form_row(form.name)}}
-        {{  form_row(form.age)}}
-        {{ form_end(form) }}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
 
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
     </div>
-    <div class="container">
+
+    <div>
+        {{ form_label(form.age) }}
+        {{ form_errors(form.age) }}
+        {{ form_widget(form.age) }}
     </div>
+
+    <div>
+        {{ form_widget(form.save) }}
+    </div>
+
+    {{ form_end(form) }}
 
 {% endblock %}
