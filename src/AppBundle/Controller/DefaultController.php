@@ -15,15 +15,37 @@ class DefaultController extends Controller
         $person = new Person();
         $person->setName('Billy the kid');
         $person->setAge(15);
+
         $form = $this->createForm(new PersonType(), $person);
         $form->handleRequest($request);
 
 
         if ($form->isValid()) {
-            exit('form was valid');
+            return $this->forward('AppBundle:Default:addPerson', array('person' => $person));
+
         }
+
         return $this->render('index.html.twig', array('form' => $form->createView()));
     }
+
+    /**
+     * @Route("/addRoute", name="addRoute")
+     */
+
+    public function addPersonAction($person)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($person);
+        $em->flush();
+//
+        return $this->render('addPerson.html.twig');
+
+
+    }
+
+
 
 
 }
