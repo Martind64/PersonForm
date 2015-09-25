@@ -1,21 +1,27 @@
 <?php
-
 namespace AppBundle\Controller;
-
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Entity\Person;
+use AppBundle\Form\Type\PersonType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/")
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        $person = new Person();
+        $person->setName('Billy the kid');
+        $person->setAge(15);
+        $form = $this->createForm(new PersonType(), $person);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            exit('form was valid');
+        }
+        return $this->render('index.html.twig', array('form' => $form->createView()));
     }
+
+
 }
