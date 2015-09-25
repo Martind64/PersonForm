@@ -2,12 +2,18 @@
 namespace AppBundle\Controller;
 use AppBundle\Entity\Person;
 use AppBundle\Form\Type\PersonType;
+<<<<<<< HEAD
 use AppBundle\Form\Type\PersonListType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 
+=======
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+>>>>>>> fdfdc85d7924e2734e7472c98633305aaf457811
 class DefaultController extends Controller
 {
     /**
@@ -39,6 +45,7 @@ class DefaultController extends Controller
 
         $em->persist($person);
         $em->flush();
+<<<<<<< HEAD
 
         return $this->render('addPerson.html.twig', array('person'  => $person));
     }
@@ -63,10 +70,18 @@ class DefaultController extends Controller
         }
 
         return $this->render('listView.html.twig', array('form' => $form->createView()));
+=======
+//
+        return $this->render('addPerson.html.twig');
+>>>>>>> fdfdc85d7924e2734e7472c98633305aaf457811
 
 
     }
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdfdc85d7924e2734e7472c98633305aaf457811
 }
