@@ -17,6 +17,8 @@ class DefaultController extends Controller
         $person->setAge(15);
         $form = $this->createForm(new PersonType(), $person);
         $form->handleRequest($request);
+
+
         if ($form->isValid()) {
             exit('form was valid');
         }
